@@ -28,10 +28,12 @@ import type {
   UpdateProfileRequest,
   UserProfile
 } from '@/services/membership';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const useAuth = () => {
   const dispatch = useAppDispatch();
-  
+  const queryClient = useQueryClient();
+
   // Selectors
   const auth = useAppSelector(selectAuth);
   const user = useAppSelector(selectUser);
@@ -101,7 +103,10 @@ export const useAuth = () => {
 
   const logoutUser = useCallback(() => {
     dispatch(logout());
-  }, [dispatch]);
+
+    //clear cache react query:
+    queryClient.clear();
+  }, [dispatch, queryClient]);
 
   const clearAuthError = useCallback(() => {
     dispatch(clearError());
