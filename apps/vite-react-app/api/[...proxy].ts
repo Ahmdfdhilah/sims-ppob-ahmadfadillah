@@ -1,3 +1,5 @@
+import { Buffer } from "buffer"
+
 export default async function handler(req: any, res: any) {
     try {
       // ambil path setelah /api/
