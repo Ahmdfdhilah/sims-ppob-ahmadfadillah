@@ -29,8 +29,8 @@ Ensure you have the following installed on your system:
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/Ahmdfdhilah/turborepo_boilerplate
-cd turborepo_boilerplate
+git clone https://github.com/Ahmdfdhilah/sims-ppob-ahmadfadillah.git
+cd sims-ppob-ahmadfadillah
 ```
 
 2. **Install dependencies:**
@@ -42,14 +42,8 @@ pnpm install
 
 **Start all applications in development mode:**
 
-For Linux/macOS:
 ```bash
-pnpm run dev:apps:linux
-```
-
-For Windows:
-```bash
-pnpm run dev:apps:windows
+pnpm run dev
 ```
 
 **Start individual applications:**
@@ -86,7 +80,7 @@ pnpm --filter <app-name> dev
 ### Styling & UI
 - **Tailwind CSS 4** - Utility-first CSS framework
 - **Radix UI** - Unstyled, accessible UI primitives
-- **Framer Motion** - Production-ready motion library
+- **Shadcn UI** - Styled
 
 ### Forms & Validation
 - **React Hook Form** - Performant forms with minimal re-renders
