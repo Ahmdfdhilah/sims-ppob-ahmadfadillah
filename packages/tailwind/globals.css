@@ -120,8 +120,8 @@ body {
     --popover: hsl(25 20% 98%);
     --popover-foreground: hsl(25 30% 15%);
     
-    /* Primary - Refined coral/salmon */
-    --primary: hsl(10 75% 58%);
+    /* Primary - same a s logo */
+    --primary: hsl(3.6735 88.2883% 56.4706%);
     --primary-foreground: hsl(0 0% 100%);
     
     /* Secondary - Harmonious beige */
