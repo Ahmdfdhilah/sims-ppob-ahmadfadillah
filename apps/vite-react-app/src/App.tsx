@@ -28,8 +28,9 @@ function App() {
       <Provider store={store}>
         <TooltipProvider>
           <PersistGate loading={null} persistor={persistor}>
-            <AuthProvider>
-              <QueryProvider>
+            <QueryProvider>
+              <AuthProvider>
+
                 {/* <ThemeProvider>   belum butuh theme*/}
                 <BrowserRouter>
                   <Toaster />
@@ -57,8 +58,8 @@ function App() {
                   </Routes>
                 </BrowserRouter>
                 {/* </ThemeProvider> */}
-              </QueryProvider>
-            </AuthProvider>
+              </AuthProvider>
+            </QueryProvider>
           </PersistGate>
         </TooltipProvider>
       </Provider>

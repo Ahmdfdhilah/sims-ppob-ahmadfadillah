@@ -27,6 +27,7 @@ import { UpdateProfileDto, updateProfileSchema, profileImageSchema } from "./Acc
 import { DEFAULT_PROFILE_IMAGE } from "@/lib/constants";
 import { ConfirmationDialog } from "@/components/common/ConfirmationDialog";
 import AccountSkeleton from "./AccountSkeleton";
+import { toast } from "@workspace/ui/components/sonner";
 
 
 export const AccountPage: React.FC = () => {
@@ -76,7 +77,10 @@ export const AccountPage: React.FC = () => {
             // Validate file using Zod schema
             const validationResult = profileImageSchema.safeParse({ file });
             if (!validationResult.success) {
-                // Error handling is done in Redux
+                const errorMessages = validationResult.error.errors.map(err => err.message);
+                errorMessages.forEach(error => {
+                    toast.error('Validasi file gagal', { description: error });
+                });
                 return;
             }
 
@@ -88,9 +92,18 @@ export const AccountPage: React.FC = () => {
             if (result.success) {
                 // Refresh profile to get updated image
                 await refreshProfile();
+            } else {
+                toast.error('Update foto profil gagal', {
+                    description: result.error || 'Terjadi kesalahan saat mengupload foto'
+                });
             }
-        } catch (error) {
-            // Error handling is done in Redux
+        } catch (error: any) {
+            // Additional error handling for unexpected errors
+            const errorMessage = error?.message || 'Terjadi kesalahan saat mengupload foto';
+            toast.error('Update foto profil gagal', {
+                description: errorMessage
+            });
+            console.error('Image upload error:', error);
         } finally {
             setIsUploadingImage(false);
             // Reset file input

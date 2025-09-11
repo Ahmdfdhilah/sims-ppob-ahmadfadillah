@@ -19,14 +19,13 @@ import {
   FormItem,
   FormMessage,
 } from "@workspace/ui/components/form";
-import { Alert, AlertDescription } from "@workspace/ui/components/alert";
 import { useAuth } from "@/hooks/useAuth";
 import type { LoginRequest } from "@/services/membership/types";
 import { LoginDto, loginSchema } from "./LoginDto";
 import { logoImg } from "@/lib/constants";
 
 export const LoginPage: React.FC = () => {
-  const { login, isLoading, error, clearError } = useAuth();
+  const { login, isLoading, clearError } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -66,13 +65,7 @@ export const LoginPage: React.FC = () => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardContent className="space-y-6">
-            {/* Error Alert */}
-            {error && (
-              <Alert variant="destructive">
-                <AlertDescription>{error}</AlertDescription>
-              </Alert>
-            )}
-
+ 
             {/* Email Field */}
             <FormField
               control={form.control}

@@ -19,14 +19,13 @@ import {
   FormItem,
   FormMessage,
 } from "@workspace/ui/components/form";
-import { Alert, AlertDescription } from "@workspace/ui/components/alert";
 import { useAuth } from "@/hooks/useAuth";
 import type { RegistrationRequest } from "@/services/membership/types";
 import { RegisterDto, registerSchema } from "./RegisterDto";
 import { logoImg } from "@/lib/constants";
 
 export const RegisterPage: React.FC = () => {
-  const { register, isLoading, error, clearError } = useAuth();
+  const { register, isLoading, clearError } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
@@ -44,7 +43,7 @@ export const RegisterPage: React.FC = () => {
 
   const onSubmit = async (data: RegisterDto) => {
     clearError();
-    
+
     const registrationData: RegistrationRequest = {
       email: data.email,
       first_name: data.first_name,
@@ -78,12 +77,6 @@ export const RegisterPage: React.FC = () => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardContent className="space-y-6">
-            {/* Error Alert */}
-            {error && (
-              <Alert variant="destructive">
-                <AlertDescription>{error}</AlertDescription>
-              </Alert>
-            )}
 
             {/* Email Field */}
             <FormField
@@ -93,15 +86,13 @@ export const RegisterPage: React.FC = () => {
                 <FormItem>
                   <FormControl>
                     <div className="relative">
-                      <Mail className={`absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transition-opacity ${
-                        field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
-                      }`} />
+                      <Mail className={`absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transition-opacity ${field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
+                        }`} />
                       <Input
                         type="email"
                         placeholder="masukan email anda"
-                        className={`h-11 pl-10 transition-opacity ${
-                          field.value ? 'opacity-100' : 'opacity-60'
-                        }`}
+                        className={`h-11 pl-10 transition-opacity ${field.value ? 'opacity-100' : 'opacity-60'
+                          }`}
                         {...field}
                       />
                     </div>
@@ -119,15 +110,13 @@ export const RegisterPage: React.FC = () => {
                 <FormItem>
                   <FormControl>
                     <div className="relative">
-                      <User className={`absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transition-opacity ${
-                        field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
-                      }`} />
+                      <User className={`absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transition-opacity ${field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
+                        }`} />
                       <Input
                         type="text"
                         placeholder="nama depan"
-                        className={`h-11 pl-10 transition-opacity ${
-                          field.value ? 'opacity-100' : 'opacity-60'
-                        }`}
+                        className={`h-11 pl-10 transition-opacity ${field.value ? 'opacity-100' : 'opacity-60'
+                          }`}
                         {...field}
                       />
                     </div>
@@ -145,15 +134,13 @@ export const RegisterPage: React.FC = () => {
                 <FormItem>
                   <FormControl>
                     <div className="relative">
-                      <User className={`absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transition-opacity ${
-                        field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
-                      }`} />
+                      <User className={`absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transition-opacity ${field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
+                        }`} />
                       <Input
                         type="text"
                         placeholder="nama belakang"
-                        className={`h-11 pl-10 transition-opacity ${
-                          field.value ? 'opacity-100' : 'opacity-60'
-                        }`}
+                        className={`h-11 pl-10 transition-opacity ${field.value ? 'opacity-100' : 'opacity-60'
+                          }`}
                         {...field}
                       />
                     </div>
@@ -171,15 +158,13 @@ export const RegisterPage: React.FC = () => {
                 <FormItem>
                   <FormControl>
                     <div className="relative">
-                      <Lock className={`absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transition-opacity ${
-                        field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
-                      }`} />
+                      <Lock className={`absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transition-opacity ${field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
+                        }`} />
                       <Input
                         type={showPassword ? "text" : "password"}
                         placeholder="buat password"
-                        className={`h-11 pl-10 pr-10 transition-opacity ${
-                          field.value ? 'opacity-100' : 'opacity-60'
-                        }`}
+                        className={`h-11 pl-10 pr-10 transition-opacity ${field.value ? 'opacity-100' : 'opacity-60'
+                          }`}
                         {...field}
                       />
                       <Button
@@ -190,13 +175,11 @@ export const RegisterPage: React.FC = () => {
                         onClick={() => setShowPassword((prev) => !prev)}
                       >
                         {showPassword ? (
-                          <EyeOff className={`h-4 w-4 transition-opacity ${
-                            field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
-                          }`} />
+                          <EyeOff className={`h-4 w-4 transition-opacity ${field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
+                            }`} />
                         ) : (
-                          <Eye className={`h-4 w-4 transition-opacity ${
-                            field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
-                          }`} />
+                          <Eye className={`h-4 w-4 transition-opacity ${field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
+                            }`} />
                         )}
                       </Button>
                     </div>
@@ -214,15 +197,13 @@ export const RegisterPage: React.FC = () => {
                 <FormItem>
                   <FormControl>
                     <div className="relative">
-                      <Lock className={`absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transition-opacity ${
-                        field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
-                      }`} />
+                      <Lock className={`absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transition-opacity ${field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
+                        }`} />
                       <Input
                         type={showConfirmPassword ? "text" : "password"}
                         placeholder="konfirmasi password"
-                        className={`h-11 pl-10 pr-10 transition-opacity ${
-                          field.value ? 'opacity-100' : 'opacity-60'
-                        }`}
+                        className={`h-11 pl-10 pr-10 transition-opacity ${field.value ? 'opacity-100' : 'opacity-60'
+                          }`}
                         {...field}
                       />
                       <Button
@@ -233,13 +214,11 @@ export const RegisterPage: React.FC = () => {
                         onClick={() => setShowConfirmPassword((prev) => !prev)}
                       >
                         {showConfirmPassword ? (
-                          <EyeOff className={`h-4 w-4 transition-opacity ${
-                            field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
-                          }`} />
+                          <EyeOff className={`h-4 w-4 transition-opacity ${field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
+                            }`} />
                         ) : (
-                          <Eye className={`h-4 w-4 transition-opacity ${
-                            field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
-                          }`} />
+                          <Eye className={`h-4 w-4 transition-opacity ${field.value ? 'opacity-100 text-foreground' : 'opacity-50 text-muted-foreground'
+                            }`} />
                         )}
                       </Button>
                     </div>
@@ -273,9 +252,9 @@ export const RegisterPage: React.FC = () => {
                 variant="link"
                 className="p-0 h-auto font-medium text-primary"
                 onClick={() => {
-                    clearError(); 
-                    navigate("/login");
-                  }}
+                  clearError();
+                  navigate("/login");
+                }}
               >
                 disini
               </Button>
